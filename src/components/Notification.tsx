@@ -40,7 +40,7 @@ export default function NotificationPopup({ message, duration, onClose }: Notifi
             zIndex: 9999,
             maxWidth: '300px',
         }}>
-            <h1>{message}</h1>
+            <h3>{message}</h3>
         </div>
     );
 }

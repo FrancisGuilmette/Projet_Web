@@ -31,12 +31,6 @@ export default function HomePage() {
 
     return (
         <div>
-            {/* <Jumpscare
-                    image={uhOh}
-                    message="YOU CANNOT ESCAPE"
-                    duration={3000}
-                /> */}
-            {/* <CursorTrail  /> */}
 
 
             {!isRunning ? (
