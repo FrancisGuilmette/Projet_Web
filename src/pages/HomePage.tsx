@@ -2,16 +2,18 @@ import Timer from '../components/Timer';
 import { useTimer } from '../context/TimerContext';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
+import Jumpscare from '../components/Jumpscare';
+import CursorTrail from '../components/CursorTrail';
+
 
 export default function HomePage() {
     const { timeLeft, isRunning, start, addTime } = useTimer();
 
-     const handleFight = () => {
+    const handleFight = () => {
         if (getRandomInt(5) === 0) {
             addTime(1);
         }
         if (getRandomInt(100) === 1) {
-            alert("What if the timer was to fight back? Huh? HUH?");
             addTime(-10);
         }
     };
@@ -23,14 +25,20 @@ export default function HomePage() {
             toast.error("You have made a terrible mistake. The timer has started. You have been warned.", { icon: '⏱️' });
         }
     };
-        function getRandomInt(max: number) {
+    function getRandomInt(max: number) {
         return Math.floor(Math.random() * max);
     }
 
     return (
-        <div>           
+        <div>
+            {/* <Jumpscare
+                    image={uhOh}
+                    message="YOU CANNOT ESCAPE"
+                    duration={3000}
+                /> */}
+            {/* <CursorTrail  /> */}
 
-            
+
             {!isRunning ? (
                 <div>
                     <h1>DO NOT START THIS TIMER</h1>
@@ -43,7 +51,7 @@ export default function HomePage() {
                         do NOT let the timer run out, or you will regret it. You have been warned.
                     </p>
                 </div>
-            )}        
+            )}
             <Timer />
 
             {!isRunning ? (

@@ -6,12 +6,15 @@ interface TimerContextType {
     start: () => void;
     addTime: (seconds: number) => void;
     events: {
-        five: boolean;
-        four: boolean;
-        three: boolean;
         two: boolean;
         one: boolean;
         timeUp: boolean;
+    };
+    eventFlags: {
+
+        twoDone: boolean;
+        oneDone: boolean;
+        timeUpDone: boolean;
     };
     setPage: (page: 'home' | 'support' | 'gameover') => void;
     page: 'home' | 'support' | 'gameover';
@@ -21,7 +24,7 @@ interface TimerContextType {
 export const TimerContext = createContext<TimerContextType | null>(null);
 
 export function TimerProvider({ children }: { children: React.ReactNode }) {
-    const [timeLeft, setTimeLeft] = useState(5* 60);
+    const [timeLeft, setTimeLeft] = useState(3 * 60);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
@@ -35,7 +38,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
                 }
                 return prev - 1;
             });
-        }, 1000);
+        }, 400);
 
         return () => clearInterval(interval);
     }, [isRunning]);
@@ -50,21 +53,19 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
     const addTime = (seconds: number) => setTimeLeft(prev => prev + seconds);
     const start = () => setIsRunning(true);
     const [events, setEvents] = useState({
-        four: false,
-        three: false,
         two: false,
         one: false,
         timeUp: false,
     });
+    const [eventFlags, setEventFlags] = useState({
+
+        twoDone: false,
+        oneDone: false,
+        timeUpDone: false,
+    });
 
     useEffect(() => {
 
-        if (timeLeft === 4 * 60 && !events.four) {
-            setEvents(prev => ({ ...prev, four: true }));
-        }
-        if (timeLeft === 3 * 60 && !events.three) {
-            setEvents(prev => ({ ...prev, three: true }));
-        }
 
         if (timeLeft === 2 * 60 && !events.two) {
             setEvents(prev => ({ ...prev, two: true }));
@@ -78,7 +79,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
     }, [timeLeft]);
 
     return (
-        <TimerContext.Provider value={{ timeLeft, isRunning, start, addTime, events, page, setPage }}>
+        <TimerContext.Provider value={{ timeLeft, isRunning, start, addTime, events, page, setPage, eventFlags, setEventFlags }}>
             {children}
         </TimerContext.Provider>
     );

@@ -7,7 +7,7 @@ export default function TimerRanOut() {
     useEffect(() => {
     document.body.style.backgroundImage = `url(${uhOh})`;
     document.body.style.overflow = 'hidden';
-    document.title = 'You are trapped.';
+    document.title = 'T̷̝̺̰͇̖̼̬̦̦͙̮̪̳̃͆̈́̅̓̊̀͂̚͜͝͝P̸̰̰̮͓͆U̸̟̹̳͚̱̖͌͊̽͌̌̑̈́̋͆́͂̕L̶̛̤͖̽̉͋̀̆̒̀̈́͘.';
 
     return () => {
         document.body.style.backgroundImage = '';

@@ -16,7 +16,9 @@
     outline-offset: 2px;
   }
 }
-
+body{
+  overflow: hidden;
+}
 .hero {
   position: relative;
 
@@ -182,4 +184,32 @@
     border-right-color: var(--border);
   }
 }
+@keyframes subtleShake {
+  0%   { transform: translateX(0px); }
+  25%  { transform: translateX(3px); }
+  50%  { transform: translateX(-3px); }
+  75%  { transform: translateX(3px); }
+  100% { transform: translateX(0px); }
+}
 
+.shake-text {
+  animation: subtleShake 0.08s infinite;
+}
+
+.font-getting-bigger{
+  animation: fontGrow 0.3s infinite;
+}
+@keyframes fontGrow {
+  0% {
+    font-size: 16px;
+    color: red;
+  }
+  50% {
+    font-size: 20px;
+    color : darkred;
+  }
+  100% {
+    font-size: 24px;
+    color :pink;
+  }
+}
