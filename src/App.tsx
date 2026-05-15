@@ -74,9 +74,9 @@ import NotificationPopup from './components/Notification';
         }
         {trail && <CursorTrail />}
         {page !== 'gameover' && (
-          <nav>
-            <button onClick={() => setPage('home')}>Home</button>
-            {isRunning && <button onClick={() => setPage('support')}>Support</button>}
+          <nav className="bad-nav">
+            <button className="bad-nav__home" onClick={() => setPage('home')}>Home</button>
+            {isRunning && <button className="bad-nav__support" onClick={() => setPage('support')}>Support</button>}
           </nav>
         )}
 

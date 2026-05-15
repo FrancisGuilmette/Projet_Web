@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useState } from 'react';
 import Jumpscare from '../components/Jumpscare';
 import CursorTrail from '../components/CursorTrail';
+import './HomePage.css';
 
 
 export default function HomePage() {
@@ -30,7 +31,7 @@ export default function HomePage() {
     }
 
     return (
-        <div>
+        <div className="home-page">
 
 
             {!isRunning ? (
